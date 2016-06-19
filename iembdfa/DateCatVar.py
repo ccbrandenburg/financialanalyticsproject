@@ -9,7 +9,7 @@ from datetime import datetime
 
 def get_column_names(y):
     #create a list of the column names
-    col_li = [list(y)]
+    col_li = list(y)
     return(col_li)
 
 #this function identfies categorical values (str) and converts them into integers to be used for modelling
@@ -18,7 +18,6 @@ def convert_categorical(y):
     def encode_categorical(x):
         enc = preprocessing.LabelEncoder()
         y[x] = enc.fit_transform(y[x])
-
     # function to each apply
     #for loop to check next values
     for item in get_column_names(y):
@@ -33,8 +32,7 @@ def convert_categorical(y):
 #date to year
 def convert_date_year(x):
     df[x] = pd.to_datetime(df[x])
-    #df[x+'_year'] = df[x].dt.year
-    return(df[x].dt.year)
+    df[x+'_year'] = df[x].dt.year
 
 
 #date to month
@@ -67,8 +65,8 @@ def convert_dateflag(x):
     else:
         y[x+'_daydif'] = 0
 
-def value_transformation():
-    #df = x
+def value_transformation(x):
+    df = x
     date_var = []
     print("This program is going to help you with \n 1.Converting categorical values to numerical values \n 2.Converting dates into categorical values \n 2.1 Turn dates into year, month, week, day")
     #path = input("Please point to the csv file > ")
@@ -78,7 +76,6 @@ def value_transformation():
     #df = pd.read_csv(path)
     print("STATUS: csv loaded as dataframe.")
     print("These are the column names of your dataframe", get_column_names(df))
-
     #identify date columns
     while True:
         answer_date = str(input("Do you want to add one or multiple date columns? y/n > "))
@@ -95,10 +92,8 @@ def value_transformation():
             print("Invalid input")
             break
     print("The following date transformations are possible:\n 1. Extract the year of the date as new variable \n 2. Extract the month of the date as new variable \n 3. Extract the day of the date as new variable \n 4. Extract the weekday of the date as new variable \n 5. Extract the weeknumber of the date as new variable \n 6. End transformations and export new .csv")
-
     #date transformations
     while True:
-
         transform_answer = input("Please pick one of the options (1,2,3,4,5,6) each can only be executed once > ")
         if transform_answer == "1":
             df[x+'_year'] = df.apply(lambda row: convert_date_year(row["date"]), axis=1)
@@ -121,7 +116,6 @@ def value_transformation():
         while transform_answer not in ["1","2","3","4","5","6"]:
             print("Invalid input")
             break
-
     #categorical transformations
     while True:
         cat_answer = input("Do you want to turn categorical values (strings) into numerical values? Identification happens automatically. y/n > ")
@@ -138,4 +132,3 @@ def value_transformation():
     print("STATUS: The dataframe has beeen saved as output_test.csv")
     print(df.head(5))
 
-value_transformation()
