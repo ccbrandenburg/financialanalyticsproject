@@ -14,7 +14,7 @@ df = pd.DataFrame(raw_data, columns = ['patient', 'obs', 'treatment', 'score', '
 
 def autoInterpolate(y):
     print(y)
-    for col in df.columns:
+    for col in y.columns:
         if y[col].dtype == 'object':
             try:
                 y[col] = pd.to_datetime(df[col])
