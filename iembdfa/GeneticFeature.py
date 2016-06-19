@@ -309,8 +309,6 @@ def feature_selection(df,target_column,id_column):
 
         featureset = l
 
-    return(df[featureset])
-
 # Returns the featureset from regression if output column is numerical otherwise returns the featureset from categorical if
 # output column is categorical
     return(df[featureset])
