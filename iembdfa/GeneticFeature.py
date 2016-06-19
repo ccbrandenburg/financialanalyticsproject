@@ -104,9 +104,9 @@ def feature_selection(df,target_column,id_column):
         ######
         # CHANGE_HERE - START: YOU ARE VERY LIKELY USING A DIFFERENT TECHNIQUE BY NOW. SO CHANGE TO YOURS.
         #####
-        if "Logistic Regression" in methods:
-            lr = sm.Logit(Y_train, X_train)
-            model=lr.fit()
+        if "SVM" in methods:
+            svc = svm.SVC(probability = True)
+            model= svc.fit(X_train,Y_train)   
             Y_predict=model.predict(X_train)
         ######
         # CHANGE_HERE - END: YOU ARE VERY LIKELY USING A DIFFERENT TECHNIQUE BY NOW. SO CHANGE TO YOURS.
@@ -241,9 +241,10 @@ def feature_selection(df,target_column,id_column):
                     ######
                     # CHANGE_HERE - START: YOU ARE VERY LIKELY USING A DIFFERENT TECHNIQUE BY NOW. SO CHANGE TO YOURS.
                     #####
-                    lr = sm.Logit(Y_train, X_train)
-                    model=lr.fit()
-                    Y_predict=model.predict(X_train)
+                     if "SVM" in methods:
+                        svc = svm.SVC(probability = True)
+                        model= svc.fit(X_train,Y_train)   
+                        Y_predict=model.predict(X_train)
                     ######
                     # CHANGE_HERE - END: YOU ARE VERY LIKELY USING A DIFFERENT TECHNIQUE BY NOW. SO CHANGE TO YOURS.
                     #####
