@@ -48,7 +48,7 @@ def autoclean(x):
             column_encoder = LabelEncoder().fit(x[column].values)
 
             x[column] = column_encoder.transform(x[column].values)
-        print(x[column].dtype)
+    
 
 
     return(x)
