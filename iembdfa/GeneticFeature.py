@@ -57,7 +57,7 @@ def feature_selection(df,target_column,id_column):
     if method_type == "categorical":
         methods = ["SVM","Decision Trees","KNNs","Logistic Regression","Naive Bayes"]
     elif method_type == "numerical":
-        methods = ["SVM","Ridge","Lasso"]
+        methods = ["Linear Regression","Random Forest","Correlation","Ridge","Lasso"]
 
 
     if method_type == "categorical":
