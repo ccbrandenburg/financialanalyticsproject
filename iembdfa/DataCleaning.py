@@ -10,13 +10,6 @@ Created on Wed Jun 15 11:39:04 2016
 import pandas as pd
 from sklearn.preprocessing import LabelEncoder
 import numpy as np
-raw_data = {'patient': [500,1, 1,-2, 2,3,4,5,6,7,None,9,6,3,4,5,6,7,8,9],
-        'obs': [1, 2, 3, 1, 2,3,4,5,6,7,8,9,6,3,4,5,6,7,8,9],
-        'treatment': [0, 1, 0, 1, 0,0, 1, 0, 1, 0,0, 1, 0, 1, 0,0, 1, 0, 1, 0],
-        'score': ['strong', 'weak', 'normal', 'weak', 'strong','strong', 'weak', 'normal', 'weak', 'strong','strong', 'weak', 'normal', 'weak', 'strong','strong', 'weak', 'normal', 'weak', 'strong'],
-        'city': ['ML', 'AL', 'BL', 'CL', 'TL','ML', 'AL', 'BL', 'CL', 'TL','ML', 'AL', 'BL', 'CL', 'TL','ML', 'AL', 'BL', 'CL', 'TL']}
-input_dataframe = pd.DataFrame(raw_data, columns = ['patient', 'obs', 'treatment', 'score', 'city'])
-
 
 # Define a function to autoclean the pandas dataframe
 def autoclean(x):
@@ -42,7 +35,7 @@ def autoclean(x):
             x[column] = x[column].apply(lambda y: x[column].median() if(abs(y - mean >std)) else y)
 
             # Calculate the number of rows in dataframe
-            n_rows = len(input_dataframe.index)
+            n_rows = len(df.index)
 
             #Calculate the percentage of negative values in the column
             negative_perc = np.sum((x[column] < 0))/n_rows
