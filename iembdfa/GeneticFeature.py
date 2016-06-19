@@ -31,13 +31,18 @@ def rank_to_dict(ranks, names, order=1):
     ranks = map(lambda x: round(x, 2), ranks)
     return dict(zip(names, ranks))
 
-def feature_selection(df,target_column):
+def feature_selection(df,target_column,id_column):
     print("IDENTIFYING TYPES...")
+    """
+    df = The training dataframe
+    target_column = The column containing the target variable
+    id_column = The column containing the id variable
+  
+    Based on the output column type (binary or numeric), it decides on the type of problem we are trying to solve.
+    If the output column is binary (0/1), we use Genetic Algorithms for feature selection.
+    If the output column is numeric, we use the best half of the features using the feature importance from RandomForests.
+    """
     in_model = []
-    list_ib = set()  #input binary
-    list_icn = set() #input categorical nominal
-    list_ico = set() #input categorical ordinal
-    list_if = set()  #input numerical continuos (input float)
     list_inputs = set()
     output_var = target_column
 
@@ -46,20 +51,12 @@ def feature_selection(df,target_column):
     for var_name in df.columns:
         if re.search('^ib_',var_name):
             list_inputs.add(var_name)
-            list_ib.add(var_name)
-            print (var_name,"is input binary")
         elif re.search('^icn_',var_name):
             list_inputs.add(var_name)
-            list_icn.add(var_name)
-            print (var_name,"is input categorical nominal")
         elif re.search('^ico_',var_name):
             list_inputs.add(var_name)
-            list_ico.add(var_name)
-            print (var_name,"is input categorical ordinal")
         elif re.search('^if_',var_name):
-            #list_inputs.add(var_name)
-            list_if.add(var_name)
-            print (var_name,"is input numerical continuos (input float)")
+            list_inputs.add(var_name)
         elif re.search('^ob_',var_name):
             output_var = var_name
         else:
@@ -203,7 +200,7 @@ def feature_selection(df,target_column):
 
         print(ranks_f)
 
-        featureset = ranks_f.index.values[0:5]
+        featureset = ranks_f.index.values[0:(len(rank_f)/2)]
 
         print(featureset)
 
