@@ -20,11 +20,10 @@ from minepy import MINE
 import json
 
 
-print("DOWNLOADING DATASETS...")
-df = pd.read_csv("https://dl.dropboxusercontent.com/u/28535341/dev.csv") #DEV-SAMPLE
-dfo = pd.read_csv("https://dl.dropboxusercontent.com/u/28535341/oot0.csv")#OUT-OF-TIME SAMPLE
-
-target_column = "ob_target"
+#print("DOWNLOADING DATASETS...")
+#df = pd.read_csv("https://dl.dropboxusercontent.com/u/28535341/dev.csv") #DEV-SAMPLE
+#dfo = pd.read_csv("https://dl.dropboxusercontent.com/u/28535341/oot0.csv")#OUT-OF-TIME SAMPLE
+#target_column = "ob_target"
 
 def rank_to_dict(ranks, names, order=1):
     minmax = MinMaxScaler()
@@ -32,9 +31,7 @@ def rank_to_dict(ranks, names, order=1):
     ranks = map(lambda x: round(x, 2), ranks)
     return dict(zip(names, ranks))
 
-def feature_selection(df,dfo,target_column):
-
-
+def feature_selection(df,target_column):
     print("IDENTIFYING TYPES...")
     in_model = []
     list_ib = set()  #input binary
@@ -321,4 +318,4 @@ def feature_selection(df,dfo,target_column):
 
         featureset = features
 
-    return featureset
+    return(featureset)
