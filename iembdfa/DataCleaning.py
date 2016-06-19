@@ -35,7 +35,7 @@ def autoclean(x):
             x[column] = x[column].apply(lambda y: x[column].median() if(abs(y - mean >std)) else y)
 
             # Calculate the number of rows in dataframe
-            n_rows = len(df.index)
+            n_rows = len(x.index)
 
             #Calculate the percentage of negative values in the column
             negative_perc = np.sum((x[column] < 0))/n_rows
