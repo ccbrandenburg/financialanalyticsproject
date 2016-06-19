@@ -29,7 +29,7 @@ def autoclean(x):
             mean = x[column].mean()
 
             #Calculate the standard deviation of the column
-            std = 1.5*x[column].std()
+            std = 2.5*x[column].std()
 
             # See for the outliers and impute with median
             x[column] = x[column].apply(lambda y: x[column].median() if(abs(y - mean >std)) else y)
