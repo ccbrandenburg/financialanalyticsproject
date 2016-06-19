@@ -21,7 +21,7 @@ ___
 ```python
 import DataCleaning
     ```
-...![Alt text](http://i.imgur.com/0E8fWWF.png "Diagram A41")
+![Alt text](http://i.imgur.com/0E8fWWF.png "Diagram A41")
 
 ...Description: 
 
