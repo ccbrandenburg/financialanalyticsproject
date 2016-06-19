@@ -2,10 +2,17 @@
 iembdfa
 ===============================
 
+Module Names
+DataCleaning.py
+AutoInterpolation.py
+DateCatVar.py
+GeneticFeature.py
+RatioVar.py
 
 Included in this module are 5 libraries that will help you during your data science adventures and help you save some of that valuable time you would rather spend on modelling rather than on data cleaning.
 
 1. DataCleaning - A.1) Automated Data Cleaning; identify invalid values and/or rows and automatically solve the problem- NAN, missing, outliers, unreliable values, out of the range, automated data input.
+import DataCleaning
 
 Description: 
 
@@ -18,17 +25,17 @@ Next to treating outliers, the function looks for any unreliable values in your 
 In the last part of the function, the function converts all the categorical variables into numeric.
 
 2. AutoInterpolation - A.4.3) Automated Interpolation transformation.
-
+import AutoInterpolation
 Description: 
 
 The AutoInterpolation package automatically detects for date variables in the dataset. It then divides the dataset into two lists. One list containing the columns having null values and the other containing the columns having non null values. The columns having null values are further divided into rows with null values and rows not containing null values. Once the above steps are performed, the non null values are used to interpolate the null values.
 
 3. GeneticFeature - A.7) Characteristics/Feature selection - Stepwise and Genetic Algorithm
-
+import GeneticFeature
 
 
 4. DateCatVar - H.2) Human assisted Data preprocessing and transformation for modelling - Text processing and Dates processing into variables that can be used in modelling.
-
+import DateCatVar
 Description: 
 ![Alt text](http://i.imgur.com/Dq38eb0.png "Initial Diagram")
 
@@ -39,6 +46,7 @@ Once the date columns on which transformation are to be performed selected, valu
 The final part of the program converts the categorical variables into numerical. 
 
 5. RatioVar - H.4) Human assisted variables and ratios creation. Create a list of possible actions that could be taken and create an user interface for a human to decide what to do.
+import RatioVar
 
 Description: RatioVar program consists of a series of human assisted steps which asks to select the columns for which different type of operations are to be performed. Once the columns are selected, the type of operation canbe selected to be performed.
 
