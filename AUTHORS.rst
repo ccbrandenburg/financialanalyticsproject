@@ -6,6 +6,7 @@ Development Lead
 ----------------
 
 * TeamD, Christopher Brandenburg <cbrandenburg@student.ie.edu>
+* TeamD, Naresh R Shah <nareshshah139@student.ie.edu>
 
 Contributors
 ------------
