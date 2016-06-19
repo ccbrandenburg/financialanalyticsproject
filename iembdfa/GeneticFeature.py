@@ -37,7 +37,7 @@ def feature_selection(df,target_column,id_column):
     df = The training dataframe
     target_column = The column containing the target variable
     id_column = The column containing the id variable
-  
+
     Based on the output column type (binary or numeric), it decides on the type of problem we are trying to solve.
     If the output column is binary (0/1), we use Genetic Algorithms for feature selection.
     If the output column is numeric, we use the best half of the features using the feature importance from RandomForests.
@@ -106,7 +106,7 @@ def feature_selection(df,target_column,id_column):
         #####
         if "SVM" in methods:
             svc = svm.SVC(probability = True)
-            model= svc.fit(X_train,Y_train)   
+            model= svc.fit(X_train,Y_train)
             Y_predict=model.predict(X_train)
         ######
         # CHANGE_HERE - END: YOU ARE VERY LIKELY USING A DIFFERENT TECHNIQUE BY NOW. SO CHANGE TO YOURS.
@@ -241,9 +241,9 @@ def feature_selection(df,target_column,id_column):
                     ######
                     # CHANGE_HERE - START: YOU ARE VERY LIKELY USING A DIFFERENT TECHNIQUE BY NOW. SO CHANGE TO YOURS.
                     #####
-                     if "SVM" in methods:
+                    if "SVM" in methods:
                         svc = svm.SVC(probability = True)
-                        model= svc.fit(X_train,Y_train)   
+                        model= svc.fit(X_train,Y_train)
                         Y_predict=model.predict(X_train)
                     ######
                     # CHANGE_HERE - END: YOU ARE VERY LIKELY USING A DIFFERENT TECHNIQUE BY NOW. SO CHANGE TO YOURS.
@@ -304,7 +304,7 @@ def feature_selection(df,target_column,id_column):
                 f+=1
                 print('feature ', f, ':', list(list_inputs)[i])
                 l.append(list(list_inputs)[i])
-                
+
         print ('gini: ', gini)
 
         featureset = l
