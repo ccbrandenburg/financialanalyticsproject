@@ -3,13 +3,13 @@ import itertools
 from scipy.stats.stats import pearsonr
 import numpy as np
 
-raw_data = {'patient': [1,np.nan, 1, 2, 2],
-        'obs': [1, 2, 3, np.nan, 2],
-        'treatment': [0.3, 1.4, 0.5, 1.2, 0.9],
-        'score': ['strong', 'weak', 'normal', 'weak', 'strong'],
-        'city': ['ML', 'AL', 'BL', 'CL', 'TL'],
-        'date' : ['1999-05-02','1999-06-02','1999-05-03','1999-05-03','1999-05-04'] }
-df = pd.DataFrame(raw_data, columns = ['patient', 'obs', 'treatment', 'score', 'city','date'])
+#raw_data = {'patient': [1,np.nan, 1, 2, 2],
+        #'obs': [1, 2, 3, np.nan, 2],
+        #'treatment': [0.3, 1.4, 0.5, 1.2, 0.9],
+        #'score': ['strong', 'weak', 'normal', 'weak', 'strong'],
+        #'city': ['ML', 'AL', 'BL', 'CL', 'TL'],
+        #'date' : ['1999-05-02','1999-06-02','1999-05-03','1999-05-03','1999-05-04'] }
+#df = pd.DataFrame(raw_data, columns = ['patient', 'obs', 'treatment', 'score', 'city','date'])
 
 
 def autoInterpolate(y):
