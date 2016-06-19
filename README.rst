@@ -30,6 +30,7 @@ The AutoInterpolation package automatically detects for date variables in the da
 4. DateCatVar - H.2) Human assisted Data preprocessing and transformation for modelling - Text processing and Dates processing into variables that can be used in modelling.
 
 Description: 
+![Screenshot](http://imgur.com/Dq38eb0 "Initial Diagram")
 
 DateCatVar program consist of a series of human assisted functions to perform Data Preprocessing and transformation for modelling. The program takes one parameter i.e. pandas dataframe and performs a series of human assited fucntions which includes identification of date columns and adding multiple date columns to perform further transformation.
 
