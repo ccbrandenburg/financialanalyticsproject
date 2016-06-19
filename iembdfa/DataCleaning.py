@@ -10,13 +10,6 @@ Created on Wed Jun 15 11:39:04 2016
 import pandas as pd
 from sklearn.preprocessing import LabelEncoder
 import numpy as np
-raw_data = {'patient': [500,1, 1,-2, 2,3,4,5,6,7,None,9,6,3,4,5,6,7,8,9],
-        'obs': [1, 2, 3, 1, 2,3,4,5,6,7,8,9,6,3,4,5,6,7,8,9],
-        'treatment': [0, 1, 0, 1, 0,0, 1, 0, 1, 0,0, 1, 0, 1, 0,0, 1, 0, 1, 0],
-        'score': ['strong', 'weak', 'normal', 'weak', 'strong','strong', 'weak', 'normal', 'weak', 'strong','strong', 'weak', 'normal', 'weak', 'strong','strong', 'weak', 'normal', 'weak', 'strong'],
-        'city': ['ML', 'AL', 'BL', 'CL', 'TL','ML', 'AL', 'BL', 'CL', 'TL','ML', 'AL', 'BL', 'CL', 'TL','ML', 'AL', 'BL', 'CL', 'TL']}
-input_dataframe = pd.DataFrame(raw_data, columns = ['patient', 'obs', 'treatment', 'score', 'city'])
-
 
 # Define a function to autoclean the pandas dataframe
 def autoclean(x):
@@ -56,8 +49,4 @@ def autoclean(x):
 
             x[column] = column_encoder.transform(x[column].values)
         print(x[column].dtype)
-
-return x
-
-autoclean(input_dataframe)
-                  
+        return(x)
