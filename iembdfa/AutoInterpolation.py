@@ -45,5 +45,5 @@ def autoInterpolate(y):
         print(cols_highest_corr)
         y[col].interpolate(method = 'linear',inplace = True)
 
-    print(y.head(5))
+    print(y)
     return(y)
