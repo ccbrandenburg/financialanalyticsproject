@@ -19,7 +19,7 @@ test_requirements = [
 
 setup(
     name='iembdfa',
-    version='1.2',
+    version='1.3',
     description="pip install iembdafa \n Included in this module are 5 libraries that will help you during your data science adventures and help you save some of that valuable time you would rather spend on modelling than on data cleaning.",
     long_description=readme + '\n\n' + history,
     author="TeamD, Christopher Brandenburg",
