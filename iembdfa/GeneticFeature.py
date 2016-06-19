@@ -31,40 +31,21 @@ def rank_to_dict(ranks, names, order=1):
     ranks = map(lambda x: round(x, 2), ranks)
     return dict(zip(names, ranks))
 
-def feature_selection(df,target_column):
+def feature_selection(df,target_column,id_column):
     print("IDENTIFYING TYPES...")
-    in_model = []
-    list_ib = set()  #input binary
-    list_icn = set() #input categorical nominal
-    list_ico = set() #input categorical ordinal
-    list_if = set()  #input numerical continuos (input float)
-    list_inputs = set()
+    """
+    df = The training dataframe
+    target_column = The column containing the target variable
+    id_column = The column containing the id variable
+  
+    Based on the output column type (binary or numeric), it decides on the type of problem we are trying to solve.
+    If the output column is binary (0/1), we use Genetic Algorithms for feature selection.
+    If the output column is numeric, we use the best half of the features using the feature importance from RandomForests.
+    """
+    df = df
+    lists = set(list(df))
     output_var = target_column
-
-
-
-    for var_name in df.columns:
-        if re.search('^ib_',var_name):
-            list_inputs.add(var_name)
-            list_ib.add(var_name)
-            print (var_name,"is input binary")
-        elif re.search('^icn_',var_name):
-            list_inputs.add(var_name)
-            list_icn.add(var_name)
-            print (var_name,"is input categorical nominal")
-        elif re.search('^ico_',var_name):
-            list_inputs.add(var_name)
-            list_ico.add(var_name)
-            print (var_name,"is input categorical ordinal")
-        elif re.search('^if_',var_name):
-            #list_inputs.add(var_name)
-            list_if.add(var_name)
-            print (var_name,"is input numerical continuos (input float)")
-        elif re.search('^ob_',var_name):
-            output_var = var_name
-        else:
-            print ("ERROR: unable to identify the type of:", var_name)
-
+    list_inputs = [x for x in lists if not x == target_column]
 
     if (df[output_var].isin([0,1]).all()):
         method_type = 'categorical'
@@ -76,7 +57,7 @@ def feature_selection(df,target_column):
     if method_type == "categorical":
         methods = ["SVM","Decision Trees","KNNs","Logistic Regression","Naive Bayes"]
     elif method_type == "numerical":
-        methods = ["SVM","Ridge","Lasso"]
+        methods = ["Linear Regression","Random Forest","Correlation","Ridge","Lasso"]
 
 
     if method_type == "categorical":
@@ -123,9 +104,9 @@ def feature_selection(df,target_column):
         ######
         # CHANGE_HERE - START: YOU ARE VERY LIKELY USING A DIFFERENT TECHNIQUE BY NOW. SO CHANGE TO YOURS.
         #####
-        if "Logistic Regression" in methods:
-            lr = sm.Logit(Y_train, X_train)
-            model=lr.fit()
+        if "SVM" in methods:
+            svc = svm.SVC(probability = True)
+            model= svc.fit(X_train,Y_train)   
             Y_predict=model.predict(X_train)
         ######
         # CHANGE_HERE - END: YOU ARE VERY LIKELY USING A DIFFERENT TECHNIQUE BY NOW. SO CHANGE TO YOURS.
@@ -152,32 +133,38 @@ def feature_selection(df,target_column):
     ####
     if method_type == "numerical":
         X_train=df[var_model]
-        Y_train=df["if_var_73"]
+        Y_train=df[output_var]
 
         names = list(X_train)
         ranks = {}
-
+# Linear Regression Model and trying to get the feature scores for the features in Linear Regression
         lr = LinearRegression(normalize=True)
         lr.fit(X_train, Y_train)
         ranks["Linear reg"] = rank_to_dict(np.abs(lr.coef_), names)
+# Ridge Regression Model and trying to get the feature scores for the features in Ridge Regression
 
         ridge = Ridge(alpha=7)
         ridge.fit(X_train, Y_train)
         ranks["Ridge"] = rank_to_dict(np.abs(ridge.coef_), names)
 
+# Lasso Regression Model and trying to get the feature scores for the features in Lasso Regression
 
         lasso = Lasso(alpha=.05)
         lasso.fit(X_train, Y_train)
         ranks["Lasso"] = rank_to_dict(np.abs(lasso.coef_), names)
 
+#Randomized Lasso Regression Model and trying to get the feature scores for the features in Randomized Lasso Regression
 
         rlasso = RandomizedLasso(alpha=0.04)
         rlasso.fit(X_train, Y_train)
         ranks["Stability"] = rank_to_dict(np.abs(rlasso.scores_), names)
+# Random Forest Regression Model and trying to get the feature scores for the features in Random Forest Regression
 
         rf = RandomForestRegressor()
         rf.fit(X_train,Y_train)
         ranks["RF"] = rank_to_dict(rf.feature_importances_, names)
+
+# Correlation Model and trying to get the feature scores for the features in Correlation
 
         f, pval  = f_regression(X_train, Y_train, center=True)
         ranks["Corr."] = rank_to_dict(f, names)
@@ -187,7 +174,7 @@ def feature_selection(df,target_column):
             r[name] = round(np.mean([ranks[method][name] for method in ranks.keys()]), 2)
 
 
-
+# Truncating to 2 decimal points
         methods = sorted(ranks.keys())
         ranks["Mean"] = r
         methods.append("Mean")
@@ -197,14 +184,14 @@ def feature_selection(df,target_column):
         for name in names:
             print ("%s\t%s" % (name, "\t".join(map(str,
                 [ranks[method][name] for method in methods]))))
-
+#Printing out feature scores
         ranks_f = pd.DataFrame(ranks)
         ranks_f.sort_values("RF",0,0,inplace = True)
-
+# Sorting features by importance with respect to random forests regression
         print(ranks_f)
-
-        featureset = ranks_f.index.values[0:5]
-
+#Printing out sorted feature scores
+        featureset = ranks_f.index.values[0:(len(rank_f)/2)]
+#Printing out the selected features
         print(featureset)
 
     if method_type == "categorical":
@@ -254,9 +241,10 @@ def feature_selection(df,target_column):
                     ######
                     # CHANGE_HERE - START: YOU ARE VERY LIKELY USING A DIFFERENT TECHNIQUE BY NOW. SO CHANGE TO YOURS.
                     #####
-                    lr = sm.Logit(Y_train, X_train)
-                    model=lr.fit()
-                    Y_predict=model.predict(X_train)
+                     if "SVM" in methods:
+                        svc = svm.SVC(probability = True)
+                        model= svc.fit(X_train,Y_train)   
+                        Y_predict=model.predict(X_train)
                     ######
                     # CHANGE_HERE - END: YOU ARE VERY LIKELY USING A DIFFERENT TECHNIQUE BY NOW. SO CHANGE TO YOURS.
                     #####
@@ -318,4 +306,6 @@ def feature_selection(df,target_column):
 
         featureset = features
 
-    return(featureset)
+# Returns the featureset from regression if output column is numerical otherwise returns the featureset from categorical if
+# output column is categorical
+    return(df[featureset])
