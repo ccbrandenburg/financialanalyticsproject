@@ -17,8 +17,9 @@ RatioVar.py
 Included in this module are 5 libraries that will help you during your data science adventures and help you save some of that valuable time you would rather spend on modelling rather than on data cleaning.
 
 1. DataCleaning - A.1) Automated Data Cleaning; identify invalid values and/or rows and automatically solve the problem- NAN, missing, outliers, unreliable values, out of the range, automated data input.
-
+```python
 import DataCleaning
+```
 ![Alt text](http://i.imgur.com/0E8fWWF.png "Diagram A41")
 Description: 
 
@@ -31,8 +32,9 @@ Next to treating outliers, the function looks for any unreliable values in your 
 In the last part of the function, the function converts all the categorical variables into numeric.
 
 2. AutoInterpolation - A.4.3) Automated Interpolation transformation.
-
+```python
 import AutoInterpolation
+```
 ![Alt text](http://i.imgur.com/Qld2XqS.png "Diagram A43")
 
 Description: 
@@ -40,16 +42,16 @@ Description:
 The AutoInterpolation package automatically detects for date variables in the dataset. It then divides the dataset into two lists. One list containing the columns having null values and the other containing the columns having non null values. The columns having null values are further divided into rows with null values and rows not containing null values. Once the above steps are performed, the non null values are used to interpolate the null values.
 
 3. GeneticFeature - A.7) Characteristics/Feature selection - Stepwise and Genetic Algorithm
-
+```python
 import GeneticFeature
-
+```
 ![Alt text](http://i.imgur.com/1zyswKT.png "Diagram A2")
 
 
 4. DateCatVar - H.2) Human assisted Data preprocessing and transformation for modelling - Text processing and Dates processing into variables that can be used in modelling.
-
+```python
 import DateCatVar
-
+```
 Description: 
 ![Alt text](http://i.imgur.com/Dq38eb0.png "Diagram H2")
 
