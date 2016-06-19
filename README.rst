@@ -19,7 +19,7 @@ Included in this module are 5 libraries that will help you during your data scie
 1. DataCleaning - A.1) Automated Data Cleaning; identify invalid values and/or rows and automatically solve the problem- NAN, missing, outliers, unreliable values, out of the range, automated data input.
 
 import DataCleaning
-
+![Alt text](http://i.imgur.com/0E8fWWF.png "Diagram A41")
 Description: 
 
 The autoclean function includes one parameter i.e. pandas dataframe. It automatically detects the numeric and string variables in your dataset and fills na based on the type of columns. For 'int64' and 'float64' type variables, it impute the NaN values with median value of that column and for the string objects, it imputes the NaN values with mode of that particular column.
@@ -33,6 +33,7 @@ In the last part of the function, the function converts all the categorical vari
 2. AutoInterpolation - A.4.3) Automated Interpolation transformation.
 
 import AutoInterpolation
+![Alt text](http://i.imgur.com/Qld2XqS.png "Diagram A43")
 
 Description: 
 
@@ -42,13 +43,15 @@ The AutoInterpolation package automatically detects for date variables in the da
 
 import GeneticFeature
 
+![Alt text](http://i.imgur.com/1zyswKT.png "Diagram A2")
+
 
 4. DateCatVar - H.2) Human assisted Data preprocessing and transformation for modelling - Text processing and Dates processing into variables that can be used in modelling.
 
 import DateCatVar
 
 Description: 
-![Alt text](http://i.imgur.com/Dq38eb0.png "Initial Diagram")
+![Alt text](http://i.imgur.com/Dq38eb0.png "Diagram H2")
 
 DateCatVar program consist of a series of human assisted functions to perform Data Preprocessing and transformation for modelling. The program takes one parameter i.e. pandas dataframe and performs a series of human assited fucntions which includes identification of date columns and adding multiple date columns to perform further transformation.
 
@@ -57,6 +60,9 @@ Once the date columns on which transformation are to be performed selected, valu
 The final part of the program converts the categorical variables into numerical. 
 
 5. RatioVar - H.4) Human assisted variables and ratios creation. Create a list of possible actions that could be taken and create an user interface for a human to decide what to do.
+
+
+![Alt text](http://i.imgur.com/jSX1gDA.png "Diagram H4")
 
 import RatioVar
 
