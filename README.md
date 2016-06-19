@@ -21,15 +21,15 @@ ___
 import DataCleaning
 ```
 ![Alt text](http://i.imgur.com/0E8fWWF.png "Diagram A41")
-Description: 
+...Description: 
 
-The autoclean function includes one parameter i.e. pandas dataframe. It automatically detects the numeric and string variables in your dataset and fills na based on the type of columns. For 'int64' and 'float64' type variables, it impute the NaN values with median value of that column and for the string objects, it imputes the NaN values with mode of that particular column.
+...The autoclean function includes one parameter i.e. pandas dataframe. It automatically detects the numeric and string variables in your dataset and fills na based on the type of columns. For 'int64' and 'float64' type variables, it impute the NaN values with median value of that column and for the string objects, it imputes the NaN values with mode of that particular column.
 
-Once the missing values in your dataset are treated, the function treats the outliers in your dataset using the basic rule of statistics. The rule states that if a particular value is 2.5 standard deviations away from the mean, the value will be treated as an outlier. The same rule is applied by the autoclean function. All the values detected as an outlier are imputed with the median value of the column in which the outlier exists.
+...Once the missing values in your dataset are treated, the function treats the outliers in your dataset using the basic rule of statistics. The rule states that if a particular value is 2.5 standard deviations away from the mean, the value will be treated as an outlier. The same rule is applied by the autoclean function. All the values detected as an outlier are imputed with the median value of the column in which the outlier exists.
 
-Next to treating outliers, the function looks for any unreliable values in your dataset. It mainly works with numeric columns and detect for the percentage of negative values in a particular column. If the percentage of negative values in a columns in your dataset is less than equal to 0.1 percent of the total values in the column, then the negative value will be converted in positive values.
+...Next to treating outliers, the function looks for any unreliable values in your dataset. It mainly works with numeric columns and detect for the percentage of negative values in a particular column. If the percentage of negative values in a columns in your dataset is less than equal to 0.1 percent of the total values in the column, then the negative value will be converted in positive values.
 
-In the last part of the function, the function converts all the categorical variables into numeric.
+...In the last part of the function, the function converts all the categorical variables into numeric.
 ___
 2. AutoInterpolation - A.4.3) Automated Interpolation transformation.
 ```python
