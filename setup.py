@@ -20,11 +20,11 @@ test_requirements = [
 setup(
     name='iembdfa',
     version='0.9',
-    description="Included in this module are 5 libraries that will help you during your data science adventures and help youu save some of that valuable time you would rather spend on modelling rather than on data cleaning.",
+    description="Included in this module are 5 libraries that will help you during your data science adventures and help you save some of that valuable time you would rather spend on modelling than on data cleaning.",
     long_description=readme + '\n\n' + history,
     author="TeamD, Christopher Brandenburg",
     author_email='cbrandenburg@student.ie.edu',
-    url='https://github.com/ccbrandenburg/iembdfa',
+    url='https://github.com/ccbrandenburg/financialanalyticsproject/0.1',
     packages=[
         'iembdfa',
     ],
