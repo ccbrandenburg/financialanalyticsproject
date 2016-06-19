@@ -17,10 +17,12 @@ RatioVar.py
 Included in this module are 5 libraries that will help you during your data science adventures and help you save some of that valuable time you would rather spend on modelling rather than on data cleaning.
 ___
 1. DataCleaning - A.1) Automated Data Cleaning; identify invalid values and/or rows and automatically solve the problem- NAN, missing, outliers, unreliable values, out of the range, automated data input.
+
 ```python
 import DataCleaning
-```
-![Alt text](http://i.imgur.com/0E8fWWF.png "Diagram A41")
+    ```
+...![Alt text](http://i.imgur.com/0E8fWWF.png "Diagram A41")
+
 ...Description: 
 
 ...The autoclean function includes one parameter i.e. pandas dataframe. It automatically detects the numeric and string variables in your dataset and fills na based on the type of columns. For 'int64' and 'float64' type variables, it impute the NaN values with median value of that column and for the string objects, it imputes the NaN values with mode of that particular column.
