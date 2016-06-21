@@ -2,6 +2,9 @@
 iembdfa
 ===============================
 
+pip install iembdfa
+
+
 Module Names
 
 DataCleaning.py
