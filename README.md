@@ -23,7 +23,7 @@ ___
 * DataCleaning - A.1) Automated Data Cleaning; identify invalid values and/or rows and automatically solve the problem- NAN, missing, outliers, unreliable values, out of the range, automated data input.
 
 ```python
-import DataCleaning
+from iembdfa import DataCleaning
 ```
 
 
@@ -39,7 +39,7 @@ Next to treating outliers, the function looks for any unreliable values in your 
 ___
 * AutoInterpolation - A.4.3) Automated Interpolation transformation.
 ```python
-import AutoInterpolation
+from iembdfa import AutoInterpolation
 ```
 
 
@@ -49,14 +49,14 @@ The AutoInterpolation package automatically detects for date variables in the da
 ___
 * GeneticFeature - A.7) Characteristics/Feature selection - Stepwise and Genetic Algorithm
 ```python
-import GeneticFeature
+from iembdfa import GeneticFeature
 ```
 ![Alt text](http://i.imgur.com/1zyswKT.png "Diagram A2")
 
 ___
 * DateCatVar - H.2) Human assisted Data preprocessing and transformation for modelling - Text processing and Dates processing into variables that can be used in modelling.
 ```python
-import DateCatVar
+from iembdfa import DateCatVar
 ```
 Description: 
 ![Alt text](http://i.imgur.com/Dq38eb0.png "Diagram H2")
